@@ -7,12 +7,17 @@
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:545073977152:android:f4948b662cf37e96f4cca5",
+        "mobilesdk_app_id": "1:545073977152:android:5b7bbba3175551eaf4cca5",
         "android_client_info": {
-          "package_name": "com.my_quran.app"
+          "package_name": "com.example.my_quran"
         }
       },
-      "oauth_client": [],
+      "oauth_client": [
+        {
+          "client_id": "545073977152-oacahravlbs1b0os4uho8n3520d3morv.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
       "api_key": [
         {
           "current_key": "AIzaSyBfn5EcmIfrKZ2RQ8Nz34NLVRhtV46jctA"
@@ -20,7 +25,55 @@
       ],
       "services": {
         "appinvite_service": {
-          "other_platform_oauth_client": []
+          "other_platform_oauth_client": [
+            {
+              "client_id": "545073977152-oacahravlbs1b0os4uho8n3520d3morv.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "545073977152-guchgfl7tc4kuftgmhg81qvijkrt1m9k.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.myQuran"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:545073977152:android:f4948b662cf37e96f4cca5",
+        "android_client_info": {
+          "package_name": "com.my_quran.app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "545073977152-oacahravlbs1b0os4uho8n3520d3morv.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBfn5EcmIfrKZ2RQ8Nz34NLVRhtV46jctA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "545073977152-oacahravlbs1b0os4uho8n3520d3morv.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "545073977152-guchgfl7tc4kuftgmhg81qvijkrt1m9k.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.myQuran"
+              }
+            }
+          ]
         }
       }
     }
