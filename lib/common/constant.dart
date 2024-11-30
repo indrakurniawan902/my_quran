@@ -1,1 +1,1 @@
-const BASE_URL = "https://equran.id/apidev/v2";
+const BASE_URL = "https://equran.id/api/v2";

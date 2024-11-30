@@ -1,5 +1,6 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:my_quran/common/injection/injection.dart';
 import 'package:my_quran/firebase_options.dart';
 import 'package:my_quran/presentation/navigation/app_router.dart';
 import 'package:my_quran/utils/colors.dart';
@@ -9,6 +10,7 @@ void main() async {
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
+  configureInjection();
   runApp(const MyApp());
 }
 

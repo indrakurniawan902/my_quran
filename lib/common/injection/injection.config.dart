@@ -20,6 +20,8 @@ import 'package:my_quran/domain/repositories/quraan/quraan_repository.dart'
     as _i982;
 import 'package:my_quran/domain/usecase/surah/get_list_surah_usecase.dart'
     as _i257;
+import 'package:my_quran/presentation/screen/quraan/cubit/quraan_cubit.dart'
+    as _i1000;
 
 extension GetItInjectableX on _i174.GetIt {
 // initializes the registration of main-scope dependencies inside of GetIt
@@ -40,6 +42,8 @@ extension GetItInjectableX on _i174.GetIt {
         remoteDataSource: gh<_i49.QuraanDataSource>()));
     gh.lazySingleton<_i257.GetListSurahUsecase>(() => _i257.GetListSurahUsecase(
         quraanRepository: gh<_i982.QuraanRepository>()));
+    gh.factory<_i1000.QuraanCubit>(
+        () => _i1000.QuraanCubit(gh<_i257.GetListSurahUsecase>()));
     return this;
   }
 }
