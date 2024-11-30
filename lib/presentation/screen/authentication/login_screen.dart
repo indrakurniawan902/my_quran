@@ -40,7 +40,7 @@ class _LoginScreenState extends State<LoginScreen> {
               color: AppColors.black,
             ),
             onPressed: () {
-              context.goNamed(AppRoutes.nrHome);
+              context.goNamed(AppRoutes.nrMenu);
             },
           ),
         ],
