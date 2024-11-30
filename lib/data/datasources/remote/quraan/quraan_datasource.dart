@@ -15,7 +15,7 @@ class QuraanDataSourceImpl implements QuraanDataSource {
 
   @override
   Future<SurahRemoteResponse> getlistSurah() async {
-    final response = await dio.get("/surah");
+    final response = await dio.get("/surat");
     if (response.statusCode == 200) {
       return SurahRemoteResponse.fromJson(response.data);
     } else {
