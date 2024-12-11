@@ -19,4 +19,13 @@ class AppTextStyles {
     fontSize: 16,
     fontFamily: 'Montserrat',
   );
+  static const bodyP2 = TextStyle(
+    fontSize: 14,
+    fontFamily: 'Montserrat',
+  );
+  static const headersArabicP1 = TextStyle(
+    fontSize: 20,
+    fontWeight: FontWeight.bold,
+    fontFamily: 'Amiri',
+  );
 }

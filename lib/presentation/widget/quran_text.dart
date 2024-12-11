@@ -29,7 +29,7 @@ class QuranText extends StatelessWidget {
       this.overflow,
       this.maxLines,
       this.textAlign,
-      this.color = AppColors.white,
+      this.color = AppColors.black,
       this.fontFamily});
   const QuranText.headingMBold(
       {super.key,
@@ -38,7 +38,16 @@ class QuranText extends StatelessWidget {
       this.overflow,
       this.maxLines,
       this.textAlign,
-      this.color = AppColors.white,
+      this.color = AppColors.black,
+      this.fontFamily});
+  const QuranText.headingArabicLBold(
+      {super.key,
+      required this.text,
+      this.textStyle = AppTextStyles.headersArabicP1,
+      this.overflow,
+      this.maxLines,
+      this.textAlign,
+      this.color = AppColors.black,
       this.fontFamily});
   const QuranText.bodyLRegular(
       {super.key,
@@ -47,7 +56,16 @@ class QuranText extends StatelessWidget {
       this.overflow,
       this.maxLines,
       this.textAlign,
-      this.color = AppColors.white,
+      this.color = AppColors.black,
+      this.fontFamily});
+  const QuranText.bodyMRegular(
+      {super.key,
+      required this.text,
+      this.textStyle = AppTextStyles.bodyP2,
+      this.overflow,
+      this.maxLines,
+      this.textAlign,
+      this.color = AppColors.black,
       this.fontFamily});
 
   // const QuranText.mobileHeadingLBold({

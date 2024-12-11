@@ -3,4 +3,5 @@ abstract class AppRoutes {
   static const String nrLogin = "login";
   static const String nrHome = "home";
   static const String nrMenu = "menu";
+  static const String nrDetailQuraan = "detailQuraan";
 }

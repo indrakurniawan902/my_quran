@@ -18,8 +18,12 @@ import 'package:my_quran/data/repositories/quraan_repository_impl.dart'
     as _i797;
 import 'package:my_quran/domain/repositories/quraan/quraan_repository.dart'
     as _i982;
+import 'package:my_quran/domain/usecase/surah/get_detail_surah_usecase.dart'
+    as _i801;
 import 'package:my_quran/domain/usecase/surah/get_list_surah_usecase.dart'
     as _i257;
+import 'package:my_quran/presentation/screen/detail_quraan/cubit/detail_quraan_cubit.dart'
+    as _i36;
 import 'package:my_quran/presentation/screen/quraan/cubit/quraan_cubit.dart'
     as _i1000;
 
@@ -42,8 +46,13 @@ extension GetItInjectableX on _i174.GetIt {
         remoteDataSource: gh<_i49.QuraanDataSource>()));
     gh.lazySingleton<_i257.GetListSurahUsecase>(() => _i257.GetListSurahUsecase(
         quraanRepository: gh<_i982.QuraanRepository>()));
+    gh.lazySingleton<_i801.GetDetailSurahUsecase>(() =>
+        _i801.GetDetailSurahUsecase(
+            quraanRepository: gh<_i982.QuraanRepository>()));
     gh.factory<_i1000.QuraanCubit>(
         () => _i1000.QuraanCubit(gh<_i257.GetListSurahUsecase>()));
+    gh.factory<_i36.DetailQuraanCubit>(
+        () => _i36.DetailQuraanCubit(gh<_i801.GetDetailSurahUsecase>()));
     return this;
   }
 }
