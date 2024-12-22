@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:my_quran/presentation/navigation/app_router.dart';
 import 'package:my_quran/presentation/navigation/app_routes.dart';
 import 'package:my_quran/presentation/widget/last_read_widget.dart';
 import 'package:my_quran/presentation/widget/quran_text.dart';
@@ -72,9 +71,7 @@ class _MenuScreenState extends State<MenuScreen> {
                                 ),
                               ],
                               borderRadius: BorderRadius.circular(23),
-                              image: const DecorationImage(
-                                  image: AssetImage(
-                                      "assets/images/bg_quran.png"))),
+                              image: const DecorationImage(image: AssetImage("assets/images/bg_quran.png"))),
                         ),
                       ),
                     ),
@@ -94,9 +91,7 @@ class _MenuScreenState extends State<MenuScreen> {
                                 ),
                               ],
                               borderRadius: BorderRadius.circular(23),
-                              image: const DecorationImage(
-                                  image: AssetImage(
-                                      "assets/images/bg_listening.png"))),
+                              image: const DecorationImage(image: AssetImage("assets/images/bg_listening.png"))),
                         ),
                       ),
                     ),
@@ -116,9 +111,7 @@ class _MenuScreenState extends State<MenuScreen> {
                                 ),
                               ],
                               borderRadius: BorderRadius.circular(23),
-                              image: const DecorationImage(
-                                  image:
-                                      AssetImage("assets/images/bg_test.png"))),
+                              image: const DecorationImage(image: AssetImage("assets/images/bg_test.png"))),
                         ),
                       ),
                     ),
@@ -138,9 +131,7 @@ class _MenuScreenState extends State<MenuScreen> {
                                 ),
                               ],
                               borderRadius: BorderRadius.circular(23),
-                              image: const DecorationImage(
-                                  image: AssetImage(
-                                      "assets/images/bg_recite.png"))),
+                              image: const DecorationImage(image: AssetImage("assets/images/bg_recite.png"))),
                         ),
                       ),
                     )
