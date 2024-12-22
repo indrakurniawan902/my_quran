@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
+import 'package:my_quran/presentation/navigation/app_routes.dart';
 import 'package:my_quran/presentation/widget/last_read_widget.dart';
 import 'package:my_quran/presentation/widget/quran_text.dart';
 import 'package:my_quran/utils/colors.dart';
@@ -54,7 +56,10 @@ class _MenuScreenState extends State<MenuScreen> {
                     Align(
                       alignment: Alignment.topLeft,
                       child: GestureDetector(
-                        onTap: () {},
+                        onTap: () {
+                          context.pushNamed(AppRoutes.nrQuraan,
+                              extra: "Quraan");
+                        },
                         child: Container(
                           height: 160,
                           width: 163,
@@ -76,7 +81,10 @@ class _MenuScreenState extends State<MenuScreen> {
                     Align(
                       alignment: Alignment.topRight,
                       child: GestureDetector(
-                        onTap: () {},
+                        onTap: () {
+                          context.pushNamed(AppRoutes.nrQuraan,
+                              extra: "Listening");
+                        },
                         child: Container(
                           height: 191,
                           width: 163,
