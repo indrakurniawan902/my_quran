@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:go_router/go_router.dart';
 import 'package:my_quran/common/injection/injection.dart';
+import 'package:my_quran/presentation/navigation/app_routes.dart';
+import 'package:my_quran/presentation/screen/detail_quraan/detail_quraan_params.dart';
 import 'package:my_quran/presentation/screen/quraan/cubit/quraan_cubit.dart';
 import 'package:my_quran/presentation/widget/quran_text.dart';
 import 'package:my_quran/utils/colors.dart';
@@ -82,17 +85,26 @@ class _QuraanScreenState extends State<QuraanScreen> {
                         separatorBuilder: (context, index) => Divider(),
                         shrinkWrap: true,
                         itemBuilder: (context, index) {
-                          return ListTile(
-                            leading: Container(
-                              height: 36,
-                              width: 36,
-                              decoration: const BoxDecoration(
-                                  color: AppColors.secondaryGreen),
-                              child:
-                                  Center(child: Text((index + 1).toString())),
+                          return GestureDetector(
+                            onTap: () {
+                              final params = DetailQuraanParams(
+                                  noSurah: state.data.data[index].nomor,
+                                  namaSurah: state.data.data[index].nama);
+                              context.pushNamed(AppRoutes.nrDetailQuraan,
+                                  extra: params);
+                            },
+                            child: ListTile(
+                              leading: Container(
+                                height: 36,
+                                width: 36,
+                                decoration: const BoxDecoration(
+                                    color: AppColors.secondaryGreen),
+                                child:
+                                    Center(child: Text((index + 1).toString())),
+                              ),
+                              title: Text(data.data[index].namaLatin),
+                              subtitle: Text(data.data[index].arti),
                             ),
-                            title: Text(data.data[index].namaLatin),
-                            subtitle: Text(data.data[index].arti),
                           );
                         },
                         itemCount: data.data.length,

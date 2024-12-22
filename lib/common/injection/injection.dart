@@ -1,8 +1,10 @@
 import 'package:dio/dio.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:get_it/get_it.dart';
 import 'package:injectable/injectable.dart';
 import 'package:my_quran/common/constant.dart';
 import 'package:pretty_dio_logger/pretty_dio_logger.dart';
+import 'package:chucker_flutter/chucker_flutter.dart';
 
 import 'injection.config.dart';
 
@@ -18,8 +20,7 @@ abstract class NetworkModule {
     final dio = Dio(BaseOptions(
         baseUrl: BASE_URL,
         connectTimeout: const Duration(milliseconds: 5000),
-        receiveTimeout:
-            const Duration(milliseconds: 3000) // Set your API base URL
+        receiveTimeout: const Duration(milliseconds: 3000) // Set your API base URL
         ));
 
     dio.interceptors.add(
@@ -33,7 +34,17 @@ abstract class NetworkModule {
         maxWidth: 90,
       ),
     );
+    dio.interceptors.add(ChuckerDioInterceptor());
 
     return dio;
+  }
+}
+
+@module
+abstract class FirebaseAuthModule {
+  @lazySingleton
+  FirebaseAuth provideFirebaseAuth() {
+    final auth = FirebaseAuth.instance;
+    return auth;
   }
 }

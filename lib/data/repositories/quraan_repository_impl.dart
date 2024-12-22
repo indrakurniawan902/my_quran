@@ -5,6 +5,7 @@ import 'package:injectable/injectable.dart';
 import 'package:my_quran/common/exception.dart';
 import 'package:my_quran/common/failure.dart';
 import 'package:my_quran/data/datasources/remote/quraan/quraan_datasource.dart';
+import 'package:my_quran/domain/entities/surah/detail_surah_data.dart';
 import 'package:my_quran/domain/entities/surah/surah_data.dart';
 import 'package:my_quran/domain/repositories/quraan/quraan_repository.dart';
 
@@ -18,6 +19,18 @@ class QuranRepositoryImpl implements QuraanRepository {
   Future<Either<Failure, Surah>> getListSurah() async {
     try {
       final result = await remoteDataSource.getlistSurah();
+      return Right(result.toDomain());
+    } on ServerException {
+      return const Left(ServerFailure(''));
+    } on SocketException {
+      return const Left(ConnectionFailure('Failed to connect to the network'));
+    }
+  }
+
+  @override
+  Future<Either<Failure, DetailSurah>> getDetailSurah(String noSurah) async {
+    try {
+      final result = await remoteDataSource.getDetailSurah(noSurah);
       return Right(result.toDomain());
     } on ServerException {
       return const Left(ServerFailure(''));

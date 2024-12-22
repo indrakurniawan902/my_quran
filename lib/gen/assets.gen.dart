@@ -12,15 +12,31 @@ import 'package:flutter/widgets.dart';
 class $AssetsImagesGen {
   const $AssetsImagesGen();
 
+  /// File path: assets/images/bg_listening.png
+  AssetGenImage get bgListening =>
+      const AssetGenImage('assets/images/bg_listening.png');
+
+  /// File path: assets/images/bg_quran.png
+  AssetGenImage get bgQuran =>
+      const AssetGenImage('assets/images/bg_quran.png');
+
+  /// File path: assets/images/bg_recite.png
+  AssetGenImage get bgRecite =>
+      const AssetGenImage('assets/images/bg_recite.png');
+
   /// File path: assets/images/bg_stack_home.png
   AssetGenImage get bgStackHome =>
       const AssetGenImage('assets/images/bg_stack_home.png');
+
+  /// File path: assets/images/bg_test.png
+  AssetGenImage get bgTest => const AssetGenImage('assets/images/bg_test.png');
 
   /// File path: assets/images/quran.png
   AssetGenImage get quran => const AssetGenImage('assets/images/quran.png');
 
   /// List of all assets
-  List<AssetGenImage> get values => [bgStackHome, quran];
+  List<AssetGenImage> get values =>
+      [bgListening, bgQuran, bgRecite, bgStackHome, bgTest, quran];
 }
 
 class Assets {
