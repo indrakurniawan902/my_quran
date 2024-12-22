@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:go_router/go_router.dart';
 import 'package:my_quran/common/injection/injection.dart';
 import 'package:my_quran/domain/entities/surah/detail_surah_data.dart';
+import 'package:my_quran/presentation/navigation/app_router.dart';
 import 'package:my_quran/presentation/screen/detail_quraan/cubit/detail_quraan_cubit.dart';
 import 'package:my_quran/presentation/screen/detail_quraan/detail_quraan_params.dart';
 import 'package:my_quran/presentation/widget/quran_text.dart';
@@ -40,7 +42,6 @@ class _DetailQuraanScreenState extends State<DetailQuraanScreen> {
                   text: widget.params.namaSurah,
                   color: AppColors.white,
                 ),
-                const SizedBox(height: 20),
                 widget.params.noSurah == 9 || widget.params.noSurah == 1
                     ? const SizedBox.shrink()
                     : const QuranText.headingArabicLBold(
@@ -58,6 +59,14 @@ class _DetailQuraanScreenState extends State<DetailQuraanScreen> {
                     color: AppColors.white,
                   ))
             ],
+            leading: IconButton(
+                onPressed: () {
+                  context.pop();
+                },
+                icon: const Icon(
+                  Icons.chevron_left,
+                  color: AppColors.white,
+                )),
           ),
           body: BlocBuilder<DetailQuraanCubit, DetailQuraanState>(
             builder: (context, state) {
@@ -95,7 +104,8 @@ class ListAyatWidget extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.end,
                 children: [
                   QuranText.headingArabicLBold(
-                    text: data.ayat[index].teksArab,
+                    text:
+                        '${data.ayat[index].teksArab} - ${data.ayat[index].nomorAyat}',
                     textAlign: TextAlign.end,
                   ),
                   const SizedBox(height: 10),

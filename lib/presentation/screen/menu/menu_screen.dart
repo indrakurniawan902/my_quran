@@ -19,16 +19,6 @@ class _MenuScreenState extends State<MenuScreen> {
       appBar: AppBar(
         surfaceTintColor: Colors.transparent,
         backgroundColor: AppColors.white,
-        leading: IconButton(
-          onPressed: () {},
-          icon: const Icon(Icons.menu),
-        ),
-        actions: [
-          IconButton(
-            onPressed: () {},
-            icon: const Icon(Icons.search),
-          ),
-        ],
         centerTitle: true,
         title: const QuranText.headingMBold(
           text: "Hafiz",

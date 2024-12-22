@@ -24,8 +24,8 @@ class AppTextStyles {
     fontFamily: 'Montserrat',
   );
   static const headersArabicP1 = TextStyle(
-    fontSize: 20,
-    fontWeight: FontWeight.bold,
-    fontFamily: 'Amiri',
-  );
+      fontSize: 20,
+      fontWeight: FontWeight.bold,
+      fontFamily: 'Amiri',
+      height: 2.5);
 }

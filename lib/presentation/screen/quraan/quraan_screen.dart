@@ -77,7 +77,8 @@ class _QuraanScreenState extends State<QuraanScreen> {
                               } else {
                                 final params = DetailQuraanParams(
                                     noSurah: state.data.data[index].nomor,
-                                    namaSurah: state.data.data[index].nama);
+                                    namaSurah:
+                                        state.data.data[index].namaLatin);
                                 context.pushNamed(AppRoutes.nrDetailQuraan,
                                     extra: params);
                               }
@@ -90,6 +91,8 @@ class _QuraanScreenState extends State<QuraanScreen> {
                               child:
                                   Center(child: Text((index + 1).toString())),
                             ),
+                            title: Text(data.data[index].namaLatin),
+                            subtitle: Text(data.data[index].arti),
                           );
                         },
                         itemCount: data.data.length,
