@@ -16,7 +16,7 @@ class AuthRepositoryImpl implements AuthRepository {
   AuthRepositoryImpl({required this.authDataSource});
 
   @override
-  Future<Either<Failure, UserCredential>> signinWithGoogle() async {
+  Future<Either<Failure, String>> signinWithGoogle() async {
     try {
       final result = await authDataSource.signinWithGoogle();
       return Right(result);

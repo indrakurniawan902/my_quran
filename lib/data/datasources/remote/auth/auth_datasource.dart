@@ -4,7 +4,7 @@ import 'package:injectable/injectable.dart';
 import 'package:my_quran/common/exception.dart';
 
 abstract class AuthDataSource {
-  Future signinWithGoogle();
+  Future<String> signinWithGoogle();
 }
 
 @LazySingleton(as: AuthDataSource)
@@ -14,19 +14,25 @@ class AuthDataSourceImpl implements AuthDataSource {
   AuthDataSourceImpl(this.auth);
 
   @override
-  Future signinWithGoogle() async {
-    final GoogleSignInAccount? gUser = await GoogleSignIn().signIn();
-    if (gUser == null) {
-      throw ServerException();
+  Future<String> signinWithGoogle() async {
+    final bool isUserLogin = auth.currentUser != null;
+    if (!isUserLogin) {
+      final GoogleSignInAccount? gUser = await GoogleSignIn().signIn();
+      if (gUser == null) {
+        throw ServerException();
+      }
+
+      final GoogleSignInAuthentication gAuth = await gUser!.authentication;
+
+      final credential = GoogleAuthProvider.credential(
+        accessToken: gAuth.accessToken,
+        idToken: gAuth.idToken,
+      );
+      await auth.signInWithCredential(credential);
+
+      return "User login successful";
+    } else {
+      return "User exist";
     }
-
-    final GoogleSignInAuthentication gAuth = await gUser!.authentication;
-
-    final credential = GoogleAuthProvider.credential(
-      accessToken: gAuth.accessToken,
-      idToken: gAuth.idToken,
-    );
-
-    return await auth.signInWithCredential(credential);
   }
 }

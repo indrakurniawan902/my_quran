@@ -1,5 +1,4 @@
 import 'package:dartz/dartz.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:injectable/injectable.dart';
 import 'package:my_quran/domain/repositories/auth/auth_repository.dart';
 
@@ -11,7 +10,7 @@ class AuthUsecase {
 
   AuthUsecase({required this.authRepository});
 
-  Future<Either<Failure, UserCredential>> call() {
+  Future<Either<Failure, String>> call() {
     return authRepository.signinWithGoogle();
   }
 }

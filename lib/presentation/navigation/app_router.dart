@@ -3,6 +3,7 @@ import 'package:go_router/go_router.dart';
 import 'package:my_quran/globals.dart';
 import 'package:my_quran/presentation/navigation/app_routes.dart';
 import 'package:my_quran/presentation/screen/authentication/login_screen.dart';
+import 'package:my_quran/presentation/screen/authentication/splash_screen.dart';
 import 'package:my_quran/presentation/screen/detail_quraan/detail_quraan_screen.dart';
 import 'package:my_quran/presentation/screen/menu/menu_screen.dart';
 import 'package:my_quran/presentation/screen/quraan/quraan_screen.dart';
@@ -12,8 +13,13 @@ import '../screen/detail_quraan/detail_quraan_params.dart';
 final GoRouter qrGlobalRouter = GoRouter(
     navigatorKey: AppGlobals.navigatorKey,
     observers: [ChuckerFlutter.navigatorObserver],
-    initialLocation: "/login",
+    initialLocation: "/splash",
     routes: [
+      GoRoute(
+        path: "/splash",
+        name: AppRoutes.nrSplash,
+        builder: (context, state) => const SplashScreen(),
+      ),
       GoRoute(
         path: "/login",
         name: AppRoutes.nrLogin,
