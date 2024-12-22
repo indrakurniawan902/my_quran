@@ -4,12 +4,16 @@ import 'package:my_quran/common/injection/injection.dart';
 import 'package:my_quran/firebase_options.dart';
 import 'package:my_quran/presentation/navigation/app_router.dart';
 import 'package:my_quran/utils/colors.dart';
+import 'package:chucker_flutter/chucker_flutter.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
+  ChuckerFlutter.showOnRelease = true;
+  ChuckerFlutter.showNotification = true;
+  ChuckerFlutter.isDebugMode = true;
   configureInjection();
   runApp(const MyApp());
 }

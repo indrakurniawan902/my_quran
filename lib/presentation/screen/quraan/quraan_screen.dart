@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:my_quran/common/injection/injection.dart';
 import 'package:my_quran/presentation/navigation/app_routes.dart';
+import 'package:my_quran/presentation/screen/detail_quraan/detail_quraan_params.dart';
 import 'package:my_quran/presentation/screen/quraan/cubit/quraan_cubit.dart';
 import 'package:my_quran/presentation/widget/last_read_widget.dart';
 import 'package:my_quran/presentation/widget/quran_text.dart';
@@ -73,6 +74,12 @@ class _QuraanScreenState extends State<QuraanScreen> {
                               if (widget.data != "Quraan") {
                                 context.pushNamed(AppRoutes.nrDetailAudio,
                                     extra: data.data[index]);
+                              } else {
+                                final params = DetailQuraanParams(
+                                    noSurah: state.data.data[index].nomor,
+                                    namaSurah: state.data.data[index].nama);
+                                context.pushNamed(AppRoutes.nrDetailQuraan,
+                                    extra: params);
                               }
                             },
                             leading: Container(
@@ -83,8 +90,6 @@ class _QuraanScreenState extends State<QuraanScreen> {
                               child:
                                   Center(child: Text((index + 1).toString())),
                             ),
-                            title: Text(data.data[index].namaLatin),
-                            subtitle: Text(data.data[index].arti),
                           );
                         },
                         itemCount: data.data.length,
