@@ -19,16 +19,6 @@ class _MenuScreenState extends State<MenuScreen> {
       appBar: AppBar(
         surfaceTintColor: Colors.transparent,
         backgroundColor: AppColors.white,
-        leading: IconButton(
-          onPressed: () {},
-          icon: const Icon(Icons.menu),
-        ),
-        actions: [
-          IconButton(
-            onPressed: () {},
-            icon: const Icon(Icons.search),
-          ),
-        ],
         centerTitle: true,
         title: const QuranText.headingMBold(
           text: "Hafiz",
@@ -57,7 +47,8 @@ class _MenuScreenState extends State<MenuScreen> {
                       alignment: Alignment.topLeft,
                       child: GestureDetector(
                         onTap: () {
-                          context.pushNamed(AppRoutes.nrHome);
+                          context.pushNamed(AppRoutes.nrQuraan,
+                              extra: "Quraan");
                         },
                         child: Container(
                           height: 160,
@@ -71,14 +62,19 @@ class _MenuScreenState extends State<MenuScreen> {
                                 ),
                               ],
                               borderRadius: BorderRadius.circular(23),
-                              image: const DecorationImage(image: AssetImage("assets/images/bg_quran.png"))),
+                              image: const DecorationImage(
+                                  image: AssetImage(
+                                      "assets/images/bg_quran.png"))),
                         ),
                       ),
                     ),
                     Align(
                       alignment: Alignment.topRight,
                       child: GestureDetector(
-                        onTap: () {},
+                        onTap: () {
+                          context.pushNamed(AppRoutes.nrQuraan,
+                              extra: "Listening");
+                        },
                         child: Container(
                           height: 191,
                           width: 163,
@@ -91,7 +87,9 @@ class _MenuScreenState extends State<MenuScreen> {
                                 ),
                               ],
                               borderRadius: BorderRadius.circular(23),
-                              image: const DecorationImage(image: AssetImage("assets/images/bg_listening.png"))),
+                              image: const DecorationImage(
+                                  image: AssetImage(
+                                      "assets/images/bg_listening.png"))),
                         ),
                       ),
                     ),
@@ -111,7 +109,9 @@ class _MenuScreenState extends State<MenuScreen> {
                                 ),
                               ],
                               borderRadius: BorderRadius.circular(23),
-                              image: const DecorationImage(image: AssetImage("assets/images/bg_test.png"))),
+                              image: const DecorationImage(
+                                  image:
+                                      AssetImage("assets/images/bg_test.png"))),
                         ),
                       ),
                     ),
@@ -131,7 +131,9 @@ class _MenuScreenState extends State<MenuScreen> {
                                 ),
                               ],
                               borderRadius: BorderRadius.circular(23),
-                              image: const DecorationImage(image: AssetImage("assets/images/bg_recite.png"))),
+                              image: const DecorationImage(
+                                  image: AssetImage(
+                                      "assets/images/bg_recite.png"))),
                         ),
                       ),
                     )

@@ -1,7 +1,9 @@
 import 'package:chucker_flutter/chucker_flutter.dart';
 import 'package:go_router/go_router.dart';
+import 'package:my_quran/domain/entities/surah/surah_data.dart';
 import 'package:my_quran/globals.dart';
 import 'package:my_quran/presentation/navigation/app_routes.dart';
+import 'package:my_quran/presentation/screen/audio/audio_screen.dart';
 import 'package:my_quran/presentation/screen/authentication/login_screen.dart';
 import 'package:my_quran/presentation/screen/authentication/splash_screen.dart';
 import 'package:my_quran/presentation/screen/detail_quraan/detail_quraan_screen.dart';
@@ -26,10 +28,12 @@ final GoRouter qrGlobalRouter = GoRouter(
         builder: (context, state) => const LoginScreen(),
       ),
       GoRoute(
-        path: "/home",
-        name: AppRoutes.nrHome,
-        builder: (context, state) => const QuraanScreen(),
-      ),
+          path: "/home",
+          name: AppRoutes.nrQuraan,
+          builder: (context, state) {
+            final data = state.extra as String;
+            return QuraanScreen(data: data);
+          }),
       // GoRoute(
       //   path: '/chat-room',
       //   name: AppRoutes.nrChatRoom,
@@ -42,6 +46,15 @@ final GoRouter qrGlobalRouter = GoRouter(
         path: "/menu",
         name: AppRoutes.nrMenu,
         builder: (context, state) => const MenuScreen(),
+      ),
+
+      GoRoute(
+        path: "/${AppRoutes.nrDetailAudio}",
+        name: AppRoutes.nrDetailAudio,
+        builder: (context, state) {
+          Datum params = state.extra as Datum;
+          return AudioScreen(surah: params);
+        },
       ),
       GoRoute(
         path: "/detailQuraan",

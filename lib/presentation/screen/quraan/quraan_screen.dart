@@ -5,11 +5,13 @@ import 'package:my_quran/common/injection/injection.dart';
 import 'package:my_quran/presentation/navigation/app_routes.dart';
 import 'package:my_quran/presentation/screen/detail_quraan/detail_quraan_params.dart';
 import 'package:my_quran/presentation/screen/quraan/cubit/quraan_cubit.dart';
+import 'package:my_quran/presentation/widget/last_read_widget.dart';
 import 'package:my_quran/presentation/widget/quran_text.dart';
 import 'package:my_quran/utils/colors.dart';
 
 class QuraanScreen extends StatefulWidget {
-  const QuraanScreen({super.key});
+  final String data;
+  const QuraanScreen({super.key, required this.data});
 
   @override
   State<QuraanScreen> createState() => _QuraanScreenState();
@@ -46,7 +48,7 @@ class _QuraanScreenState extends State<QuraanScreen> {
           ],
           centerTitle: true,
           title: const QuranText.headingMBold(
-            text: "Hafiz",
+            text: "Quraan",
             color: AppColors.primaryGreen,
           ),
         ),
@@ -55,26 +57,7 @@ class _QuraanScreenState extends State<QuraanScreen> {
           child: Column(
             children: [
               const SizedBox(height: 40),
-              Container(
-                padding: const EdgeInsets.all(27),
-                height: 170,
-                width: double.infinity,
-                decoration: const BoxDecoration(
-                    image: DecorationImage(
-                        image: AssetImage("assets/images/bg_stack_home.png")),
-                    borderRadius: BorderRadius.all(Radius.circular(23))),
-                child: const Stack(
-                  children: [
-                    Align(
-                      alignment: Alignment.topLeft,
-                      child: QuranText.headingMBold(
-                        text: "Quran",
-                        color: AppColors.primaryGreen,
-                      ),
-                    )
-                  ],
-                ),
-              ),
+              const LastReadWidget(),
               const SizedBox(height: 20),
               Expanded(
                 child: BlocBuilder<QuraanCubit, QuraanState>(
@@ -82,29 +65,34 @@ class _QuraanScreenState extends State<QuraanScreen> {
                     if (state is QuraanSuccess) {
                       final data = state.data;
                       return ListView.separated(
-                        separatorBuilder: (context, index) => Divider(),
+                        separatorBuilder: (context, index) => const Divider(),
                         shrinkWrap: true,
                         itemBuilder: (context, index) {
-                          return GestureDetector(
+                          return ListTile(
                             onTap: () {
-                              final params = DetailQuraanParams(
-                                  noSurah: state.data.data[index].nomor,
-                                  namaSurah: state.data.data[index].nama);
-                              context.pushNamed(AppRoutes.nrDetailQuraan,
-                                  extra: params);
+                              print("test");
+                              if (widget.data != "Quraan") {
+                                context.pushNamed(AppRoutes.nrDetailAudio,
+                                    extra: data.data[index]);
+                              } else {
+                                final params = DetailQuraanParams(
+                                    noSurah: state.data.data[index].nomor,
+                                    namaSurah:
+                                        state.data.data[index].namaLatin);
+                                context.pushNamed(AppRoutes.nrDetailQuraan,
+                                    extra: params);
+                              }
                             },
-                            child: ListTile(
-                              leading: Container(
-                                height: 36,
-                                width: 36,
-                                decoration: const BoxDecoration(
-                                    color: AppColors.secondaryGreen),
-                                child:
-                                    Center(child: Text((index + 1).toString())),
-                              ),
-                              title: Text(data.data[index].namaLatin),
-                              subtitle: Text(data.data[index].arti),
+                            leading: Container(
+                              height: 36,
+                              width: 36,
+                              decoration: const BoxDecoration(
+                                  color: AppColors.secondaryGreen),
+                              child:
+                                  Center(child: Text((index + 1).toString())),
                             ),
+                            title: Text(data.data[index].namaLatin),
+                            subtitle: Text(data.data[index].arti),
                           );
                         },
                         itemCount: data.data.length,

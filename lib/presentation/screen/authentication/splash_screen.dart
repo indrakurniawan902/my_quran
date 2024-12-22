@@ -32,14 +32,20 @@ class _SplashScreenState extends State<SplashScreen> {
           backgroundColor: AppColors.primaryGreen,
           body: BlocListener<AuthCubit, AuthState>(
             listener: (context, state) {
+              print('state : $state');
               if (state is AuthSuccess) {
-                Future.delayed(const Duration(seconds: 2), () => context.goNamed(AppRoutes.nrMenu));
+                Future.delayed(const Duration(seconds: 2),
+                    () => context.goNamed(AppRoutes.nrMenu));
               } else {
-                Future.delayed(const Duration(seconds: 2), () => context.goNamed(AppRoutes.nrLogin));
+                Future.delayed(const Duration(seconds: 2),
+                    () => context.goNamed(AppRoutes.nrLogin));
               }
             },
             child: Center(
-              child: SizedBox(height: 200, width: 200, child: Image.asset("assets/images/quran.png")),
+              child: SizedBox(
+                  height: 200,
+                  width: 200,
+                  child: Image.asset("assets/images/quran.png")),
             ),
           ),
         ));
