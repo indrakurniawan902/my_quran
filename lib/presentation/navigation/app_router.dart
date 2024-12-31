@@ -7,14 +7,19 @@ import 'package:my_quran/presentation/screen/audio/audio_screen.dart';
 import 'package:my_quran/presentation/screen/authentication/login_screen.dart';
 import 'package:my_quran/presentation/screen/authentication/splash_screen.dart';
 import 'package:my_quran/presentation/screen/detail_quraan/detail_quraan_screen.dart';
+import 'package:my_quran/presentation/screen/doa/doa_screen.dart';
 import 'package:my_quran/presentation/screen/menu/menu_screen.dart';
 import 'package:my_quran/presentation/screen/quraan/quraan_screen.dart';
+import 'package:my_quran/utils/analytics_service.dart';
 
 import '../screen/detail_quraan/detail_quraan_params.dart';
 
 final GoRouter qrGlobalRouter = GoRouter(
     navigatorKey: AppGlobals.navigatorKey,
-    observers: [ChuckerFlutter.navigatorObserver],
+    observers: [
+      ChuckerFlutter.navigatorObserver,
+      AnalyticsService().getAnaliticsObserver()
+    ],
     initialLocation: "/splash",
     routes: [
       GoRoute(
@@ -63,5 +68,10 @@ final GoRouter qrGlobalRouter = GoRouter(
           DetailQuraanParams params = state.extra as DetailQuraanParams;
           return DetailQuraanScreen(params: params);
         },
+      ),
+      GoRoute(
+        path: "/doa",
+        name: AppRoutes.nrDoa,
+        builder: (context, state) => const DoaScreen(),
       ),
     ]);

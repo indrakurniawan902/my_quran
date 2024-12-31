@@ -1,10 +1,17 @@
+import 'dart:ui';
+
 import 'package:firebase_core/firebase_core.dart';
+import 'package:firebase_crashlytics/firebase_crashlytics.dart';
 import 'package:flutter/material.dart';
 import 'package:my_quran/common/injection/injection.dart';
+import 'package:my_quran/data/models/doa/local/doa_local_model.dart';
+import 'package:my_quran/data/models/quraan/local/detail_surah_local_model.dart';
+import 'package:my_quran/data/models/quraan/local/surah_local_model.dart';
 import 'package:my_quran/firebase_options.dart';
 import 'package:my_quran/presentation/navigation/app_router.dart';
 import 'package:my_quran/utils/colors.dart';
 import 'package:chucker_flutter/chucker_flutter.dart';
+import 'package:hive_flutter/hive_flutter.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -15,7 +22,27 @@ void main() async {
   ChuckerFlutter.showNotification = true;
   ChuckerFlutter.isDebugMode = true;
   configureInjection();
+  initHiveAdapters();
+  // firebase crashlitic non fatal
+  await FirebaseCrashlytics.instance.setCrashlyticsCollectionEnabled(true);
+  PlatformDispatcher.instance.onError = (error, stack) {
+    FirebaseCrashlytics.instance.recordError(error, stack, fatal: true);
+    FirebaseCrashlytics.instance.recordError(error, stack, fatal: false);
+    return true;
+  };
+
   runApp(const MyApp());
+}
+
+void initHiveAdapters() async {
+  await Hive.initFlutter();
+  // register all adapter
+  Hive.registerAdapter(DoaLocalModelAdapter());
+  Hive.registerAdapter(DetailSurahLocalModelAdapter());
+  Hive.registerAdapter(SurahLocalModelAdapter());
+  Hive.registerAdapter(AyatLocalModelAdapter());
+  Hive.registerAdapter(AudioFullLocalModelAdapter());
+  Hive.registerAdapter(DatumLocalModelAdapter());
 }
 
 class MyApp extends StatelessWidget {

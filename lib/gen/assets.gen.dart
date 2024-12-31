@@ -31,12 +31,33 @@ class $AssetsImagesGen {
   /// File path: assets/images/bg_test.png
   AssetGenImage get bgTest => const AssetGenImage('assets/images/bg_test.png');
 
+  /// File path: assets/images/img_detail_audio.png
+  AssetGenImage get imgDetailAudio =>
+      const AssetGenImage('assets/images/img_detail_audio.png');
+
+  /// File path: assets/images/img_pause_button.png
+  AssetGenImage get imgPauseButton =>
+      const AssetGenImage('assets/images/img_pause_button.png');
+
+  /// File path: assets/images/img_playbutton.png
+  AssetGenImage get imgPlaybutton =>
+      const AssetGenImage('assets/images/img_playbutton.png');
+
   /// File path: assets/images/quran.png
   AssetGenImage get quran => const AssetGenImage('assets/images/quran.png');
 
   /// List of all assets
-  List<AssetGenImage> get values =>
-      [bgListening, bgQuran, bgRecite, bgStackHome, bgTest, quran];
+  List<AssetGenImage> get values => [
+        bgListening,
+        bgQuran,
+        bgRecite,
+        bgStackHome,
+        bgTest,
+        imgDetailAudio,
+        imgPauseButton,
+        imgPlaybutton,
+        quran
+      ];
 }
 
 class Assets {

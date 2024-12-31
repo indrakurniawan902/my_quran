@@ -32,7 +32,6 @@ class _SplashScreenState extends State<SplashScreen> {
           backgroundColor: AppColors.primaryGreen,
           body: BlocListener<AuthCubit, AuthState>(
             listener: (context, state) {
-              print('state : $state');
               if (state is AuthSuccess) {
                 Future.delayed(const Duration(seconds: 2),
                     () => context.goNamed(AppRoutes.nrMenu));

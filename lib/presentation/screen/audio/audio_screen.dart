@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:audioplayers/audioplayers.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
@@ -18,6 +20,10 @@ class _AudioScreenState extends State<AudioScreen> {
   Duration _totalDuration = Duration.zero;
   Duration _currentPosition = Duration.zero;
   bool isPlaying = true;
+
+  late StreamSubscription<Duration> _durationSubscription;
+  late StreamSubscription<Duration> _positionSubscription;
+  late StreamSubscription<void> _completeSubscription;
 
   void playAudio() async {
     final String? audio = widget.surah.audioFull['05'];
@@ -49,30 +55,34 @@ class _AudioScreenState extends State<AudioScreen> {
 
   @override
   void initState() {
-    _audioPlayer.onDurationChanged.listen((duration) {
+    _durationSubscription = _audioPlayer.onDurationChanged.listen((duration) {
       setState(() {
         _totalDuration = duration;
       });
     });
 
-    _audioPlayer.onPositionChanged.listen((position) {
+    _positionSubscription = _audioPlayer.onPositionChanged.listen((position) {
       setState(() {
         _currentPosition = position;
       });
     });
 
-    _audioPlayer.onPlayerComplete.listen((event) {
+    _completeSubscription = _audioPlayer.onPlayerComplete.listen((event) {
       setState(() {
         _currentPosition = Duration.zero;
         isPlaying = false;
       });
     });
     playAudio();
+
     super.initState();
   }
 
   @override
   void dispose() {
+    _durationSubscription.cancel();
+    _positionSubscription.cancel();
+    _completeSubscription.cancel();
     _audioPlayer.dispose();
     super.dispose();
   }
