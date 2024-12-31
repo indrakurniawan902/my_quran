@@ -118,7 +118,9 @@ class _MenuScreenState extends State<MenuScreen> {
                     Align(
                       alignment: Alignment.bottomRight,
                       child: GestureDetector(
-                        onTap: () {},
+                        onTap: () {
+                          context.pushNamed(AppRoutes.nrDoa);
+                        },
                         child: Container(
                           height: 160,
                           width: 163,

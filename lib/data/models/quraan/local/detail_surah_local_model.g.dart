@@ -1,0 +1,157 @@
+// GENERATED CODE - DO NOT MODIFY BY HAND
+
+part of 'detail_surah_local_model.dart';
+
+// **************************************************************************
+// TypeAdapterGenerator
+// **************************************************************************
+
+class DetailSurahLocalModelAdapter extends TypeAdapter<DetailSurahLocalModel> {
+  @override
+  final int typeId = 2;
+
+  @override
+  DetailSurahLocalModel read(BinaryReader reader) {
+    final numOfFields = reader.readByte();
+    final fields = <int, dynamic>{
+      for (int i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
+    };
+    return DetailSurahLocalModel(
+      nomor: fields[0] as int,
+      nama: fields[1] as String,
+      namaLatin: fields[2] as String,
+      jumlahAyat: fields[3] as int,
+      tempatTurun: fields[4] as String,
+      arti: fields[5] as String,
+      deskripsi: fields[6] as String,
+      audioFull: fields[7] as AudioFullLocalModel,
+      ayat: (fields[8] as List).cast<AyatLocalModel>(),
+    );
+  }
+
+  @override
+  void write(BinaryWriter writer, DetailSurahLocalModel obj) {
+    writer
+      ..writeByte(9)
+      ..writeByte(0)
+      ..write(obj.nomor)
+      ..writeByte(1)
+      ..write(obj.nama)
+      ..writeByte(2)
+      ..write(obj.namaLatin)
+      ..writeByte(3)
+      ..write(obj.jumlahAyat)
+      ..writeByte(4)
+      ..write(obj.tempatTurun)
+      ..writeByte(5)
+      ..write(obj.arti)
+      ..writeByte(6)
+      ..write(obj.deskripsi)
+      ..writeByte(7)
+      ..write(obj.audioFull)
+      ..writeByte(8)
+      ..write(obj.ayat);
+  }
+
+  @override
+  int get hashCode => typeId.hashCode;
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is DetailSurahLocalModelAdapter &&
+          runtimeType == other.runtimeType &&
+          typeId == other.typeId;
+}
+
+class AyatLocalModelAdapter extends TypeAdapter<AyatLocalModel> {
+  @override
+  final int typeId = 4;
+
+  @override
+  AyatLocalModel read(BinaryReader reader) {
+    final numOfFields = reader.readByte();
+    final fields = <int, dynamic>{
+      for (int i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
+    };
+    return AyatLocalModel(
+      nomorAyat: fields[0] as int,
+      teksArab: fields[1] as String,
+      teksLatin: fields[2] as String,
+      teksIndonesia: fields[3] as String,
+      audio: fields[4] as AudioFullLocalModel,
+    );
+  }
+
+  @override
+  void write(BinaryWriter writer, AyatLocalModel obj) {
+    writer
+      ..writeByte(5)
+      ..writeByte(0)
+      ..write(obj.nomorAyat)
+      ..writeByte(1)
+      ..write(obj.teksArab)
+      ..writeByte(2)
+      ..write(obj.teksLatin)
+      ..writeByte(3)
+      ..write(obj.teksIndonesia)
+      ..writeByte(4)
+      ..write(obj.audio);
+  }
+
+  @override
+  int get hashCode => typeId.hashCode;
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is AyatLocalModelAdapter &&
+          runtimeType == other.runtimeType &&
+          typeId == other.typeId;
+}
+
+class AudioFullLocalModelAdapter extends TypeAdapter<AudioFullLocalModel> {
+  @override
+  final int typeId = 5;
+
+  @override
+  AudioFullLocalModel read(BinaryReader reader) {
+    final numOfFields = reader.readByte();
+    final fields = <int, dynamic>{
+      for (int i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
+    };
+    return AudioFullLocalModel(
+      s01: fields[0] as String,
+      s02: fields[1] as String,
+      s03: fields[2] as String,
+      s04: fields[3] as String,
+      s05: fields[4] as String,
+    );
+  }
+
+  @override
+  void write(BinaryWriter writer, AudioFullLocalModel obj) {
+    writer
+      ..writeByte(5)
+      ..writeByte(0)
+      ..write(obj.s01)
+      ..writeByte(1)
+      ..write(obj.s02)
+      ..writeByte(2)
+      ..write(obj.s03)
+      ..writeByte(3)
+      ..write(obj.s04)
+      ..writeByte(4)
+      ..write(obj.s05);
+  }
+
+  @override
+  int get hashCode => typeId.hashCode;
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is AudioFullLocalModelAdapter &&
+          runtimeType == other.runtimeType &&
+          typeId == other.typeId;
+}

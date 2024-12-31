@@ -3,10 +3,10 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:my_quran/common/injection/injection.dart';
 import 'package:my_quran/domain/entities/surah/detail_surah_data.dart';
-import 'package:my_quran/presentation/navigation/app_router.dart';
 import 'package:my_quran/presentation/screen/detail_quraan/cubit/detail_quraan_cubit.dart';
 import 'package:my_quran/presentation/screen/detail_quraan/detail_quraan_params.dart';
 import 'package:my_quran/presentation/widget/quran_text.dart';
+import 'package:my_quran/utils/analytics_service.dart';
 import 'package:my_quran/utils/colors.dart';
 
 class DetailQuraanScreen extends StatefulWidget {
@@ -19,9 +19,20 @@ class DetailQuraanScreen extends StatefulWidget {
 
 class _DetailQuraanScreenState extends State<DetailQuraanScreen> {
   final DetailQuraanCubit _detailQuraanCubit = getIt<DetailQuraanCubit>();
+  final AnalyticsService _analyticsService = getIt<AnalyticsService>();
+
+  Future<void> _sendAnalyticEventPage() async {
+    await _analyticsService.analytics.logEvent(
+        name: "page_viewed_detail_quraan",
+        parameters: <String, Object>{
+          "surah_no": widget.params.noSurah.toString(),
+          "surah_name": widget.params.namaSurah,
+        });
+  }
 
   @override
   void initState() {
+    _sendAnalyticEventPage();
     _detailQuraanCubit.getDetailSurah(widget.params.noSurah.toString());
     super.initState();
   }
@@ -70,6 +81,7 @@ class _DetailQuraanScreenState extends State<DetailQuraanScreen> {
           ),
           body: BlocBuilder<DetailQuraanCubit, DetailQuraanState>(
             builder: (context, state) {
+              print('state is : $state');
               if (state is DetailQuraanError) {
                 return Center(child: Text('Error: ${state.error}'));
               } else if (state is DetailQuraanLoading) {

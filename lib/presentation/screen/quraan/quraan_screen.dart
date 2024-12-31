@@ -7,6 +7,7 @@ import 'package:my_quran/presentation/screen/detail_quraan/detail_quraan_params.
 import 'package:my_quran/presentation/screen/quraan/cubit/quraan_cubit.dart';
 import 'package:my_quran/presentation/widget/last_read_widget.dart';
 import 'package:my_quran/presentation/widget/quran_text.dart';
+import 'package:my_quran/utils/analytics_service.dart';
 import 'package:my_quran/utils/colors.dart';
 
 class QuraanScreen extends StatefulWidget {
@@ -19,9 +20,26 @@ class QuraanScreen extends StatefulWidget {
 
 class _QuraanScreenState extends State<QuraanScreen> {
   final QuraanCubit _quraanCubit = getIt<QuraanCubit>();
+  final AnalyticsService _analyticsService = getIt<AnalyticsService>();
+
+  Future<void> _sendAnalyticEventPage() async {
+    await _analyticsService.analytics
+        .logEvent(name: "page_viewed_quraan", parameters: <String, Object>{
+      "page_name": "quraan",
+      "section_name": "quraan",
+    });
+  }
+
+  Future<void> _sendAnalyticEventClick(String section) async {
+    await _analyticsService.analytics
+        .logEvent(name: "quran_clicked_list", parameters: <String, Object>{
+      "section_name": widget.data,
+    });
+  }
 
   @override
   void initState() {
+    _sendAnalyticEventPage();
     _quraanCubit.getSurah();
     super.initState();
   }
@@ -70,7 +88,7 @@ class _QuraanScreenState extends State<QuraanScreen> {
                         itemBuilder: (context, index) {
                           return ListTile(
                             onTap: () {
-                              print("test");
+                              _sendAnalyticEventClick(widget.data);
                               if (widget.data != "Quraan") {
                                 context.pushNamed(AppRoutes.nrDetailAudio,
                                     extra: data.data[index]);
