@@ -180,7 +180,7 @@ class _MenuScreenState extends State<MenuScreen> {
                 decoration: const BoxDecoration(
                     color: Colors.white,
                     borderRadius: BorderRadius.only(
-                        topLeft: const Radius.circular(20.0),
+                        topLeft: Radius.circular(20.0),
                         topRight: Radius.circular(20.0))),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
