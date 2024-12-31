@@ -3,7 +3,6 @@ import 'dart:io';
 import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
 import 'package:injectable/injectable.dart';
-import 'package:my_quran/common/exception.dart';
 import 'package:my_quran/common/failure.dart';
 import 'package:my_quran/data/datasources/local/quraan/quraan_local_datasource.dart';
 import 'package:my_quran/data/datasources/remote/quraan/quraan_datasource.dart';
