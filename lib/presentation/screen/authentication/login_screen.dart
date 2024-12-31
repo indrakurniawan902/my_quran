@@ -39,7 +39,7 @@ class _LoginScreenState extends State<LoginScreen> {
             const SizedBox(height: 22),
             BlocConsumer<AuthCubit, AuthState>(
               listener: (context, state) {
-                if (state is AuthSuccess) {
+                if (state is LoginSuccess) {
                   context.goNamed(AppRoutes.nrMenu);
                 }
               },
@@ -53,7 +53,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     color: AppColors.black,
                   ),
                   onPressed: () {
-                    _authCubit.signinWithGoogle();
+                    _authCubit.logginWithGoogle();
                   },
                 );
               },

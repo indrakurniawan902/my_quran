@@ -32,7 +32,12 @@ import 'package:my_quran/domain/repositories/auth/auth_repository.dart'
 import 'package:my_quran/domain/repositories/doa/doa_repository.dart' as _i809;
 import 'package:my_quran/domain/repositories/quraan/quraan_repository.dart'
     as _i982;
-import 'package:my_quran/domain/usecase/auth/auth_usecase.dart' as _i570;
+import 'package:my_quran/domain/usecase/auth/check_login_google_usecase.dart'
+    as _i110;
+import 'package:my_quran/domain/usecase/auth/login_google_usecase.dart'
+    as _i156;
+import 'package:my_quran/domain/usecase/auth/logout_google_usecase.dart'
+    as _i490;
 import 'package:my_quran/domain/usecase/doa/get_list_doa_usecase.dart'
     as _i1022;
 import 'package:my_quran/domain/usecase/surah/get_detail_surah_usecase.dart'
@@ -98,14 +103,22 @@ extension GetItInjectableX on _i174.GetIt {
         ));
     gh.factory<_i1000.QuraanCubit>(
         () => _i1000.QuraanCubit(gh<_i257.GetListSurahUsecase>()));
-    gh.lazySingleton<_i570.AuthUsecase>(
-        () => _i570.AuthUsecase(authRepository: gh<_i1060.AuthRepository>()));
-    gh.factory<_i198.AuthCubit>(
-        () => _i198.AuthCubit(authUsecase: gh<_i570.AuthUsecase>()));
+    gh.lazySingleton<_i110.CheckLoginGoogleUsecase>(() =>
+        _i110.CheckLoginGoogleUsecase(
+            authRepository: gh<_i1060.AuthRepository>()));
+    gh.lazySingleton<_i156.LoginGoogleUseCase>(() =>
+        _i156.LoginGoogleUseCase(authRepository: gh<_i1060.AuthRepository>()));
+    gh.lazySingleton<_i490.LogoutGoogleUseCase>(() =>
+        _i490.LogoutGoogleUseCase(authRepository: gh<_i1060.AuthRepository>()));
     gh.lazySingleton<_i1022.GetListDoaUsecase>(() =>
         _i1022.GetListDoaUsecase(doaRepository: gh<_i809.DoaRepository>()));
     gh.factory<_i36.DetailQuraanCubit>(
         () => _i36.DetailQuraanCubit(gh<_i801.GetDetailSurahUsecase>()));
+    gh.factory<_i198.AuthCubit>(() => _i198.AuthCubit(
+          gh<_i110.CheckLoginGoogleUsecase>(),
+          gh<_i156.LoginGoogleUseCase>(),
+          gh<_i490.LogoutGoogleUseCase>(),
+        ));
     gh.factory<_i605.DoaCubit>(
         () => _i605.DoaCubit(gh<_i1022.GetListDoaUsecase>()));
     return this;

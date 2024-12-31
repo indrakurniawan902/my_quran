@@ -5,6 +5,8 @@ import 'package:my_quran/common/exception.dart';
 
 abstract class AuthDataSource {
   Future<String> signinWithGoogle();
+  Future<bool> isLogginWithGoogle();
+  Future<void> signoutWithGoogle();
 }
 
 @LazySingleton(as: AuthDataSource)
@@ -15,24 +17,30 @@ class AuthDataSourceImpl implements AuthDataSource {
 
   @override
   Future<String> signinWithGoogle() async {
-    final bool isUserLogin = auth.currentUser != null;
-    if (!isUserLogin) {
-      final GoogleSignInAccount? gUser = await GoogleSignIn().signIn();
-      if (gUser == null) {
-        throw ServerException();
-      }
-
-      final GoogleSignInAuthentication gAuth = await gUser!.authentication;
-
-      final credential = GoogleAuthProvider.credential(
-        accessToken: gAuth.accessToken,
-        idToken: gAuth.idToken,
-      );
-      await auth.signInWithCredential(credential);
-
-      return "User login successful";
-    } else {
-      return "User exist";
+    final GoogleSignInAccount? gUser = await GoogleSignIn().signIn();
+    if (gUser == null) {
+      throw ServerException();
     }
+
+    final GoogleSignInAuthentication gAuth = await gUser!.authentication;
+
+    final credential = GoogleAuthProvider.credential(
+      accessToken: gAuth.accessToken,
+      idToken: gAuth.idToken,
+    );
+    await auth.signInWithCredential(credential);
+
+    return "success login";
+  }
+
+  @override
+  Future<bool> isLogginWithGoogle() async {
+    final bool isUserLogin = auth.currentUser != null;
+    return isUserLogin;
+  }
+
+  @override
+  Future<void> signoutWithGoogle() async {
+    await auth.signOut();
   }
 }

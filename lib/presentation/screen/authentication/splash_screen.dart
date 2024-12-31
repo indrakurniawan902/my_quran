@@ -20,7 +20,7 @@ class _SplashScreenState extends State<SplashScreen> {
   final AuthCubit _authCubit = getIt<AuthCubit>();
   @override
   void initState() {
-    _authCubit.signinWithGoogle();
+    _authCubit.isLogginWithGoogle();
     super.initState();
   }
 
@@ -33,11 +33,14 @@ class _SplashScreenState extends State<SplashScreen> {
           body: BlocListener<AuthCubit, AuthState>(
             listener: (context, state) {
               if (state is AuthSuccess) {
-                Future.delayed(const Duration(seconds: 2),
-                    () => context.goNamed(AppRoutes.nrMenu));
-              } else {
-                Future.delayed(const Duration(seconds: 2),
-                    () => context.goNamed(AppRoutes.nrLogin));
+                final data = state.data;
+                if (data) {
+                  Future.delayed(const Duration(seconds: 2),
+                      () => context.goNamed(AppRoutes.nrMenu));
+                } else {
+                  Future.delayed(const Duration(seconds: 2),
+                      () => context.goNamed(AppRoutes.nrLogin));
+                }
               }
             },
             child: Center(

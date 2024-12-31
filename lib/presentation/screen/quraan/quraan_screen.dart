@@ -116,6 +116,9 @@ class _QuraanScreenState extends State<QuraanScreen> {
                         itemCount: data.data.length,
                       );
                     }
+                    if (state is QuraanLoading) {
+                      return const Center(child: CircularProgressIndicator());
+                    }
 
                     return const SizedBox.shrink();
                   },

@@ -1,0 +1,16 @@
+import 'package:dartz/dartz.dart';
+import 'package:injectable/injectable.dart';
+import 'package:my_quran/domain/repositories/auth/auth_repository.dart';
+
+import '../../../common/failure.dart';
+
+@lazySingleton
+class CheckLoginGoogleUsecase {
+  final AuthRepository authRepository;
+
+  CheckLoginGoogleUsecase({required this.authRepository});
+
+  Future<Either<Failure, bool>> call() {
+    return authRepository.isLogginWithGoogle();
+  }
+}
