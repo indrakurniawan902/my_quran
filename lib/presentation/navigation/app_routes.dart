@@ -6,4 +6,5 @@ abstract class AppRoutes {
   static const String nrDetailAudio = "detail-audio";
   static const String nrDetailQuraan = "detailQuraan";
   static const String nrDoa = 'doa';
+  static const String nrWaktuShalat = "waktuShalat";
 }

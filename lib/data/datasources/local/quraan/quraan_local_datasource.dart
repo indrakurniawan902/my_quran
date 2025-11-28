@@ -20,7 +20,6 @@ class QuraanLocalDatasourceImpl extends QuraanLocalDatasource {
       final surahBox = await Hive.openBox(QRHiveConstant.surahBox);
       return surahBox.get(QRHiveConstant.surahBox);
     } catch (e) {
-      print('Message : $e');
       throw CacheException(e.toString());
     }
   }

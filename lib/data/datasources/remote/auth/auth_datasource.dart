@@ -22,7 +22,7 @@ class AuthDataSourceImpl implements AuthDataSource {
       throw ServerException();
     }
 
-    final GoogleSignInAuthentication gAuth = await gUser!.authentication;
+    final GoogleSignInAuthentication gAuth = await gUser.authentication;
 
     final credential = GoogleAuthProvider.credential(
       accessToken: gAuth.accessToken,

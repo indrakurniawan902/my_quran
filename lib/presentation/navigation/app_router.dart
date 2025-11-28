@@ -9,6 +9,7 @@ import 'package:my_quran/presentation/screen/authentication/splash_screen.dart';
 import 'package:my_quran/presentation/screen/detail_quraan/detail_quraan_screen.dart';
 import 'package:my_quran/presentation/screen/doa/doa_screen.dart';
 import 'package:my_quran/presentation/screen/menu/menu_screen.dart';
+import 'package:my_quran/presentation/screen/prayer_time/prayer_time_screen.dart';
 import 'package:my_quran/presentation/screen/quraan/quraan_screen.dart';
 import 'package:my_quran/utils/analytics_service.dart';
 
@@ -73,5 +74,10 @@ final GoRouter qrGlobalRouter = GoRouter(
         path: "/doa",
         name: AppRoutes.nrDoa,
         builder: (context, state) => const DoaScreen(),
+      ),
+      GoRoute(
+        path: "/waktuShalat",
+        name: AppRoutes.nrWaktuShalat,
+        builder: (context, state) => const PrayerTimeScreen(),
       ),
     ]);

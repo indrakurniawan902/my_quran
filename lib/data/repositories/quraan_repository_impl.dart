@@ -1,5 +1,3 @@
-import 'dart:io';
-
 import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
 import 'package:injectable/injectable.dart';
@@ -20,9 +18,7 @@ class QuranRepositoryImpl implements QuraanRepository {
   final QuraanDioErrHandler quraanDioErrHandler;
 
   QuranRepositoryImpl(
-      {required this.remoteDataSource,
-      required this.quraanDioErrHandler,
-      required this.localDatasource});
+      {required this.remoteDataSource, required this.quraanDioErrHandler, required this.localDatasource});
 
   @override
   Future<Either<Failure, Surah>> getListSurah() async {
@@ -32,8 +28,7 @@ class QuranRepositoryImpl implements QuraanRepository {
         return Right(result.toDomain());
       } else {
         final response = await remoteDataSource.getlistSurah();
-        await localDatasource
-            .setSurahLocal(SurahLocalModel.fromRemote(response));
+        await localDatasource.setSurahLocal(SurahLocalModel.fromRemote(response));
         return Right(response.toDomain());
       }
     } on DioException catch (e) {
@@ -52,8 +47,7 @@ class QuranRepositoryImpl implements QuraanRepository {
         return Right(result.toDomain());
       } else {
         final response = await remoteDataSource.getDetailSurah(noSurah);
-        await localDatasource
-            .setDetailSurahLocal(DetailSurahLocalModel.fromRemote(response));
+        await localDatasource.setDetailSurahLocal(DetailSurahLocalModel.fromRemote(response));
         return Right(response.toDomain());
       }
     } on DioException catch (e) {

@@ -12,12 +12,15 @@ import 'package:my_quran/presentation/navigation/app_router.dart';
 import 'package:my_quran/utils/colors.dart';
 import 'package:chucker_flutter/chucker_flutter.dart';
 import 'package:hive_flutter/hive_flutter.dart';
+import 'package:intl/date_symbol_data_local.dart'; // ✅ Tambahkan ini
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
+  // ✅ Initialize locale Indonesia
+  await initializeDateFormatting('id_ID', null);
   ChuckerFlutter.showOnRelease = true;
   ChuckerFlutter.showNotification = true;
   ChuckerFlutter.isDebugMode = true;
@@ -56,8 +59,7 @@ class MyApp extends StatelessWidget {
         debugShowCheckedModeBanner: false,
         title: 'My Quran',
         theme: ThemeData(
-            colorScheme:
-                ColorScheme.fromSeed(seedColor: AppColors.primaryGreen),
+            colorScheme: ColorScheme.fromSeed(seedColor: AppColors.primaryGreen),
             useMaterial3: true,
             fontFamily: 'Montserrat',
             pageTransitionsTheme: const PageTransitionsTheme(builders: {

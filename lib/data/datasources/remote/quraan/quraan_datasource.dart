@@ -1,6 +1,3 @@
-import 'dart:developer';
-
-import 'package:dio/dio.dart';
 import 'package:injectable/injectable.dart';
 import 'package:my_quran/common/constant.dart';
 import 'package:my_quran/common/exception.dart';

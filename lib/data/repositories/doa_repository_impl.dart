@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
 import 'package:injectable/injectable.dart';
@@ -15,10 +17,7 @@ class DoaRepositoryImpl implements DoaRepository {
   final QuraanDioErrHandler quraanDioErrHandler;
   final DoaLocalDatasource localDatasource;
 
-  DoaRepositoryImpl(
-      {required this.remoteDataSource,
-      required this.quraanDioErrHandler,
-      required this.localDatasource});
+  DoaRepositoryImpl({required this.remoteDataSource, required this.quraanDioErrHandler, required this.localDatasource});
   @override
   Future<Either<Failure, List<DoaData>>> getListDoa() async {
     try {
