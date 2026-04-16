@@ -17,7 +17,7 @@ jobs:
 
       - name: Set flavor based on branch
         run: |
-          if [ "${{ github.ref_name }}" = "dev" ]; then
+          if [ "${{ github.ref_name }}" = "development" ]; then
             echo "FLAVOR=development" >> $GITHUB_ENV
             echo "TARGET=lib/main_development.dart" >> $GITHUB_ENV
             echo "APP_ID=${{ secrets.FIREBASE_APP_ID_DEV }}" >> $GITHUB_ENV
