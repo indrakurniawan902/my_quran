@@ -58,7 +58,7 @@ class DefaultFirebaseOptions {
 
   static const FirebaseOptions android = FirebaseOptions(
     apiKey: 'AIzaSyBfn5EcmIfrKZ2RQ8Nz34NLVRhtV46jctA',
-    appId: '1:545073977152:android:5b7bbba3175551eaf4cca5',
+    appId: '1:545073977152:android:8c4281f45953edadf4cca5',
     messagingSenderId: '545073977152',
     projectId: 'my-quran-ec98e',
     storageBucket: 'my-quran-ec98e.firebasestorage.app',
@@ -70,6 +70,7 @@ class DefaultFirebaseOptions {
     messagingSenderId: '545073977152',
     projectId: 'my-quran-ec98e',
     storageBucket: 'my-quran-ec98e.firebasestorage.app',
+    androidClientId: '545073977152-15h4fsk0e2gl9ii6fcbnlhcubg0ijaoa.apps.googleusercontent.com',
     iosClientId: '545073977152-guchgfl7tc4kuftgmhg81qvijkrt1m9k.apps.googleusercontent.com',
     iosBundleId: 'com.example.myQuran',
   );

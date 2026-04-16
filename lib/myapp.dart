@@ -1,8 +1,12 @@
 import 'dart:ui';
 
+import 'package:chucker_flutter/chucker_flutter.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_crashlytics/firebase_crashlytics.dart';
 import 'package:flutter/material.dart';
+import 'package:hive_flutter/hive_flutter.dart';
+import 'package:intl/date_symbol_data_local.dart';
+import 'package:my_quran/common/flavor_config.dart';
 import 'package:my_quran/common/injection/injection.dart';
 import 'package:my_quran/data/models/doa/local/doa_local_model.dart';
 import 'package:my_quran/data/models/quraan/local/detail_surah_local_model.dart';
@@ -10,34 +14,30 @@ import 'package:my_quran/data/models/quraan/local/surah_local_model.dart';
 import 'package:my_quran/firebase_options.dart';
 import 'package:my_quran/presentation/navigation/app_router.dart';
 import 'package:my_quran/utils/colors.dart';
-import 'package:chucker_flutter/chucker_flutter.dart';
-import 'package:hive_flutter/hive_flutter.dart';
-import 'package:intl/date_symbol_data_local.dart'; // ✅ Tambahkan ini
 
-void main() async {
+Future<void> bootstrap(FlavorConfig flavor) async {
+  FlavorConfig.current = flavor;
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
-  // ✅ Initialize locale Indonesia
   await initializeDateFormatting('id_ID', null);
   ChuckerFlutter.showOnRelease = true;
   ChuckerFlutter.showNotification = true;
   ChuckerFlutter.isDebugMode = true;
   configureInjection();
-  initHiveAdapters();
-  // firebase crashlitic non fatal
+  _initHiveAdapters();
+  // firebase crashlytics non fatal
   await FirebaseCrashlytics.instance.setCrashlyticsCollectionEnabled(true);
   PlatformDispatcher.instance.onError = (error, stack) {
     FirebaseCrashlytics.instance.recordError(error, stack, fatal: true);
     FirebaseCrashlytics.instance.recordError(error, stack, fatal: false);
     return true;
   };
-
-  runApp(const MyApp());
+  runApp(MyApp(flavor: flavor));
 }
 
-void initHiveAdapters() async {
+void _initHiveAdapters() async {
   await Hive.initFlutter();
   // register all adapter
   Hive.registerAdapter(DoaLocalModelAdapter());
@@ -49,7 +49,8 @@ void initHiveAdapters() async {
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+  final FlavorConfig flavor;
+  const MyApp({super.key, required this.flavor});
 
   @override
   Widget build(BuildContext context) {

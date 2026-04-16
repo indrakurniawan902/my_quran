@@ -40,6 +40,25 @@ android {
             signingConfig = signingConfigs.debug
         }
     }
+    
+    flavorDimensions "default"
+    productFlavors {
+        development {
+            dimension "default"
+            manifestPlaceholders = [appName: "My Quran Dev"]
+            applicationIdSuffix ".dev"
+        }
+        staging {
+            dimension "default"
+            manifestPlaceholders = [appName: "My Quran Staging"]
+            applicationIdSuffix ".staging"
+        }
+        production {
+            dimension "default"
+            manifestPlaceholders = [appName: "My Quran"]
+            applicationIdSuffix ""
+        }
+    }
 }
 
 flutter {
