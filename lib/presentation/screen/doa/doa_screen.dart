@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:my_quran/common/injection/injection.dart';
@@ -22,16 +21,14 @@ class _DoaScreenState extends State<DoaScreen> {
 
   // send analytics to firebase
   Future<void> _sendAnalyticEventPage() async {
-    await _analyticsService.analytics
-        .logEvent(name: "page_viewed_doa", parameters: <String, Object>{
+    await _analyticsService.analytics.logEvent(name: "page_viewed_doa", parameters: <String, Object>{
       "page_name": "doa",
       "section_name": "doa",
     });
   }
 
   Future<void> _sendAnalyticEventClick(String name) async {
-    await _analyticsService.analytics
-        .logEvent(name: "doa_clicked_list", parameters: <String, Object>{
+    await _analyticsService.analytics.logEvent(name: "doa_clicked_list", parameters: <String, Object>{
       "section_name": name,
     });
   }

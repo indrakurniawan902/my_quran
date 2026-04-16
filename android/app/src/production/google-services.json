@@ -14,6 +14,22 @@
       },
       "oauth_client": [
         {
+          "client_id": "545073977152-15h4fsk0e2gl9ii6fcbnlhcubg0ijaoa.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.my_quran",
+            "certificate_hash": "3d8b30d7cb3924035b49dad02a00e724aa09341f"
+          }
+        },
+        {
+          "client_id": "545073977152-pao7478u54949r2ebsuodk4vimfd61ce.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.my_quran",
+            "certificate_hash": "d6fe4cb99e644868fa01e4190ab5b318c7ab30b4"
+          }
+        },
+        {
           "client_id": "545073977152-oacahravlbs1b0os4uho8n3520d3morv.apps.googleusercontent.com",
           "client_type": 3
         }
@@ -43,9 +59,9 @@
     },
     {
       "client_info": {
-        "mobilesdk_app_id": "1:545073977152:android:f4948b662cf37e96f4cca5",
+        "mobilesdk_app_id": "1:545073977152:android:8c4281f45953edadf4cca5",
         "android_client_info": {
-          "package_name": "com.my_quran.app"
+          "package_name": "com.myquraan.id"
         }
       },
       "oauth_client": [

@@ -1,0 +1,166 @@
+{
+  "project_info": {
+    "project_number": "545073977152",
+    "project_id": "my-quran-ec98e",
+    "storage_bucket": "my-quran-ec98e.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:545073977152:android:5b7bbba3175551eaf4cca5",
+        "android_client_info": {
+          "package_name": "com.example.my_quran"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "545073977152-15h4fsk0e2gl9ii6fcbnlhcubg0ijaoa.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.my_quran",
+            "certificate_hash": "3d8b30d7cb3924035b49dad02a00e724aa09341f"
+          }
+        },
+        {
+          "client_id": "545073977152-pao7478u54949r2ebsuodk4vimfd61ce.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.my_quran",
+            "certificate_hash": "d6fe4cb99e644868fa01e4190ab5b318c7ab30b4"
+          }
+        },
+        {
+          "client_id": "545073977152-oacahravlbs1b0os4uho8n3520d3morv.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBfn5EcmIfrKZ2RQ8Nz34NLVRhtV46jctA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "545073977152-oacahravlbs1b0os4uho8n3520d3morv.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "545073977152-guchgfl7tc4kuftgmhg81qvijkrt1m9k.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.myQuran"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:545073977152:android:8c0a45d40d731262f4cca5",
+        "android_client_info": {
+          "package_name": "com.example.my_quran.dev"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "545073977152-iui2u41sdpppr6559v5toq1gtt7h2e70.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.my_quran.dev",
+            "certificate_hash": "d6fe4cb99e644868fa01e4190ab5b318c7ab30b4"
+          }
+        },
+        {
+          "client_id": "545073977152-kkj9tru6mrtgkln26vh1f4esdhlbb87p.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.my_quran.dev",
+            "certificate_hash": "3d8b30d7cb3924035b49dad02a00e724aa09341f"
+          }
+        },
+        {
+          "client_id": "545073977152-oacahravlbs1b0os4uho8n3520d3morv.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBfn5EcmIfrKZ2RQ8Nz34NLVRhtV46jctA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "545073977152-oacahravlbs1b0os4uho8n3520d3morv.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "545073977152-guchgfl7tc4kuftgmhg81qvijkrt1m9k.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.myQuran"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:545073977152:android:bd2ed9261f30f922f4cca5",
+        "android_client_info": {
+          "package_name": "com.example.my_quran.stg"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "545073977152-dfccrld59er9dc6bo7nqnnk3fugoqdhp.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.my_quran.stg",
+            "certificate_hash": "d6fe4cb99e644868fa01e4190ab5b318c7ab30b4"
+          }
+        },
+        {
+          "client_id": "545073977152-pt9h7p3lf768u2i3alalm8kh0ar7tvea.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.my_quran.stg",
+            "certificate_hash": "3d8b30d7cb3924035b49dad02a00e724aa09341f"
+          }
+        },
+        {
+          "client_id": "545073977152-oacahravlbs1b0os4uho8n3520d3morv.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBfn5EcmIfrKZ2RQ8Nz34NLVRhtV46jctA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "545073977152-oacahravlbs1b0os4uho8n3520d3morv.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "545073977152-guchgfl7tc4kuftgmhg81qvijkrt1m9k.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.myQuran"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

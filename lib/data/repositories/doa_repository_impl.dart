@@ -15,10 +15,7 @@ class DoaRepositoryImpl implements DoaRepository {
   final QuraanDioErrHandler quraanDioErrHandler;
   final DoaLocalDatasource localDatasource;
 
-  DoaRepositoryImpl(
-      {required this.remoteDataSource,
-      required this.quraanDioErrHandler,
-      required this.localDatasource});
+  DoaRepositoryImpl({required this.remoteDataSource, required this.quraanDioErrHandler, required this.localDatasource});
   @override
   Future<Either<Failure, List<DoaData>>> getListDoa() async {
     try {

@@ -1,2 +1,5 @@
-const BASE_URL = "https://equran.id/api/v2";
-const BASE_URL_DOA = "https://doa-doa-api-ahmadramadhan.fly.dev";
+import 'package:my_quran/common/flavor_config.dart';
+
+String get BASE_URL => FlavorConfig.current.baseUrl;
+String get BASE_URL_DOA => FlavorConfig.current.baseUrlDoa;
+String get BASE_URL_PRAYER_TIME => FlavorConfig.current.baseUrlPrayerTime;

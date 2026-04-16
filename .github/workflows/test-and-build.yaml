@@ -1,0 +1,70 @@
+name: Build & Distribute to Firebase
+
+on:
+  push:
+    branches:
+      - development
+      - staging
+      - main
+
+jobs:
+  build-and-distribute:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set flavor based on branch
+        run: |
+          if [ "${{ github.ref_name }}" = "dev" ]; then
+            echo "FLAVOR=development" >> $GITHUB_ENV
+            echo "TARGET=lib/main_development.dart" >> $GITHUB_ENV
+            echo "APP_ID=${{ secrets.FIREBASE_APP_ID_DEV }}" >> $GITHUB_ENV
+          elif [ "${{ github.ref_name }}" = "staging" ]; then
+            echo "FLAVOR=staging" >> $GITHUB_ENV
+            echo "TARGET=lib/main_staging.dart" >> $GITHUB_ENV
+            echo "APP_ID=${{ secrets.FIREBASE_APP_ID_STAGING }}" >> $GITHUB_ENV
+          elif [ "${{ github.ref_name }}" = "main" ]; then
+            echo "FLAVOR=production" >> $GITHUB_ENV
+            echo "TARGET=lib/main_production.dart" >> $GITHUB_ENV
+            echo "APP_ID=${{ secrets.FIREBASE_APP_ID_PROD }}" >> $GITHUB_ENV
+          fi
+
+      - name: Setup Java
+        uses: actions/setup-java@v4
+        with:
+          distribution: 'zulu'
+          java-version: '17'
+
+      - name: Setup Flutter
+        uses: subosito/flutter-action@v2
+        with:
+          flutter-version: '3.24.0'
+          channel: 'stable'
+          cache: true
+
+      - name: Install dependencies
+        run: flutter pub get
+
+      - name: Run code generation
+        run: dart run build_runner build --delete-conflicting-outputs
+
+      - name: Build APK
+        run: |
+          flutter build apk \
+            --release \
+            --flavor ${{ env.FLAVOR }} \
+            -t ${{ env.TARGET }}
+
+      - name: Upload APK to Firebase App Distribution
+        uses: wzieba/Firebase-Distribution-Github-Action@v1
+        with:
+          appId: ${{ env.APP_ID }}
+          token: ${{ secrets.FIREBASE_TOKEN }}
+          groups: testers
+          file: build/app/outputs/flutter-apk/app-${{ env.FLAVOR }}-release.apk
+          releaseNotes: |
+            Branch: ${{ github.ref_name }}
+            Commit: ${{ github.sha }}
+            Message: ${{ github.event.head_commit.message }}

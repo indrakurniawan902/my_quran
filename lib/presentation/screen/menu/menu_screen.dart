@@ -65,8 +65,7 @@ class _MenuScreenState extends State<MenuScreen> {
                         alignment: Alignment.topLeft,
                         child: GestureDetector(
                           onTap: () {
-                            context.pushNamed(AppRoutes.nrQuraan,
-                                extra: "Quraan");
+                            context.pushNamed(AppRoutes.nrQuraan, extra: "Quraan");
                           },
                           child: Container(
                             height: 160,
@@ -80,9 +79,7 @@ class _MenuScreenState extends State<MenuScreen> {
                                   ),
                                 ],
                                 borderRadius: BorderRadius.circular(23),
-                                image: const DecorationImage(
-                                    image: AssetImage(
-                                        "assets/images/bg_quran.png"))),
+                                image: const DecorationImage(image: AssetImage("assets/images/bg_quran.png"))),
                           ),
                         ),
                       ),
@@ -90,8 +87,7 @@ class _MenuScreenState extends State<MenuScreen> {
                         alignment: Alignment.topRight,
                         child: GestureDetector(
                           onTap: () {
-                            context.pushNamed(AppRoutes.nrQuraan,
-                                extra: "Listening");
+                            context.pushNamed(AppRoutes.nrQuraan, extra: "Listening");
                           },
                           child: Container(
                             height: 191,
@@ -105,16 +101,16 @@ class _MenuScreenState extends State<MenuScreen> {
                                   ),
                                 ],
                                 borderRadius: BorderRadius.circular(23),
-                                image: const DecorationImage(
-                                    image: AssetImage(
-                                        "assets/images/bg_listening.png"))),
+                                image: const DecorationImage(image: AssetImage("assets/images/bg_listening.png"))),
                           ),
                         ),
                       ),
                       Align(
                         alignment: Alignment.bottomLeft,
                         child: GestureDetector(
-                          onTap: () {},
+                          onTap: () {
+                            context.pushNamed(AppRoutes.nrWaktuShalat);
+                          },
                           child: Container(
                             height: 191,
                             width: 163,
@@ -127,9 +123,7 @@ class _MenuScreenState extends State<MenuScreen> {
                                   ),
                                 ],
                                 borderRadius: BorderRadius.circular(23),
-                                image: const DecorationImage(
-                                    image: AssetImage(
-                                        "assets/images/bg_test.png"))),
+                                image: const DecorationImage(image: AssetImage("assets/images/bg_test.png"))),
                           ),
                         ),
                       ),
@@ -151,9 +145,7 @@ class _MenuScreenState extends State<MenuScreen> {
                                   ),
                                 ],
                                 borderRadius: BorderRadius.circular(23),
-                                image: const DecorationImage(
-                                    image: AssetImage(
-                                        "assets/images/bg_recite.png"))),
+                                image: const DecorationImage(image: AssetImage("assets/images/bg_recite.png"))),
                           ),
                         ),
                       )
@@ -179,15 +171,13 @@ class _MenuScreenState extends State<MenuScreen> {
                 padding: const EdgeInsets.all(20),
                 decoration: const BoxDecoration(
                     color: Colors.white,
-                    borderRadius: BorderRadius.only(
-                        topLeft: const Radius.circular(20.0),
-                        topRight: Radius.circular(20.0))),
+                    borderRadius:
+                        BorderRadius.only(topLeft: const Radius.circular(20.0), topRight: Radius.circular(20.0))),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: [
-                    const Center(
-                        child: Text('Are you sure you want to Logout?')),
+                    const Center(child: Text('Are you sure you want to Logout?')),
                     const SizedBox(height: 20),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -195,13 +185,10 @@ class _MenuScreenState extends State<MenuScreen> {
                         Expanded(
                           child: ElevatedButton(
                               style: ButtonStyle(
-                                  backgroundColor:
-                                      WidgetStateProperty.all(Colors.red[400]),
-                                  padding: const WidgetStatePropertyAll(
-                                      EdgeInsets.all(0))),
+                                  backgroundColor: WidgetStateProperty.all(Colors.red[400]),
+                                  padding: const WidgetStatePropertyAll(EdgeInsets.all(0))),
                               onPressed: () {
-                                _authCubit
-                                    .logoutWithGoogle(); // Perform async operation
+                                _authCubit.logoutWithGoogle(); // Perform async operation
 
                                 context.goNamed(AppRoutes.nrLogin);
                               },
@@ -214,10 +201,8 @@ class _MenuScreenState extends State<MenuScreen> {
                         Expanded(
                           child: ElevatedButton(
                               style: ButtonStyle(
-                                  backgroundColor:
-                                      WidgetStateProperty.all(Colors.blue[400]),
-                                  padding: const WidgetStatePropertyAll(
-                                      EdgeInsets.all(0))),
+                                  backgroundColor: WidgetStateProperty.all(Colors.blue[400]),
+                                  padding: const WidgetStatePropertyAll(EdgeInsets.all(0))),
                               onPressed: () {
                                 context.pop();
                               },
