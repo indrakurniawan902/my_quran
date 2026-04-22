@@ -9,6 +9,32 @@
 
 import 'package:flutter/widgets.dart';
 
+class $AssetsCerGen {
+  const $AssetsCerGen();
+
+  /// File path: assets/cer/aladhan.cer
+  String get aladhanCer => 'assets/cer/aladhan.cer';
+
+  /// File path: assets/cer/aladhan.pem
+  String get aladhanPem => 'assets/cer/aladhan.pem';
+
+  /// File path: assets/cer/doa_api.cer
+  String get doaApiCer => 'assets/cer/doa_api.cer';
+
+  /// File path: assets/cer/doa_api.pem
+  String get doaApiPem => 'assets/cer/doa_api.pem';
+
+  /// File path: assets/cer/equran_id.cer
+  String get equranIdCer => 'assets/cer/equran_id.cer';
+
+  /// File path: assets/cer/equran_id.pem
+  String get equranIdPem => 'assets/cer/equran_id.pem';
+
+  /// List of all assets
+  List<String> get values =>
+      [aladhanCer, aladhanPem, doaApiCer, doaApiPem, equranIdCer, equranIdPem];
+}
+
 class $AssetsImagesGen {
   const $AssetsImagesGen();
 
@@ -63,6 +89,7 @@ class $AssetsImagesGen {
 class Assets {
   Assets._();
 
+  static const $AssetsCerGen cer = $AssetsCerGen();
   static const $AssetsImagesGen images = $AssetsImagesGen();
 }
 

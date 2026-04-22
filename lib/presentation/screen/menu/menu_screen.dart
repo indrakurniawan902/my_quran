@@ -6,6 +6,7 @@ import 'package:my_quran/presentation/navigation/app_routes.dart';
 import 'package:my_quran/presentation/screen/authentication/cubit/auth_cubit.dart';
 import 'package:my_quran/presentation/widget/last_read_widget.dart';
 import 'package:my_quran/presentation/widget/quran_text.dart';
+import 'package:my_quran/utils/analytics_service.dart';
 import 'package:my_quran/utils/colors.dart';
 
 class MenuScreen extends StatefulWidget {
@@ -17,6 +18,27 @@ class MenuScreen extends StatefulWidget {
 
 class _MenuScreenState extends State<MenuScreen> {
   final AuthCubit _authCubit = getIt<AuthCubit>();
+  final AnalyticsService _analyticsService = getIt<AnalyticsService>();
+  // send analytics to firebase
+  Future<void> _sendAnalyticEventPage() async {
+    await _analyticsService.analytics.logEvent(name: "page_viewed_menu", parameters: <String, Object>{
+      "page_name": "menu",
+      "section_name": "menu",
+    });
+  }
+
+  Future<void> _sendAnalyticEventClick(String name) async {
+    await _analyticsService.analytics.logEvent(name: "menu_${name}_clicked", parameters: <String, Object>{
+      "section_name": name,
+    });
+  }
+
+  @override
+  void initState() {
+    _sendAnalyticEventPage();
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return MultiBlocProvider(
@@ -38,6 +60,7 @@ class _MenuScreenState extends State<MenuScreen> {
                 color: Colors.red,
               ),
               onPressed: () {
+                _sendAnalyticEventClick("logout");
                 _modalBottomSheetMenu();
               },
             ),
@@ -65,6 +88,7 @@ class _MenuScreenState extends State<MenuScreen> {
                         alignment: Alignment.topLeft,
                         child: GestureDetector(
                           onTap: () {
+                            _sendAnalyticEventClick("quraan");
                             context.pushNamed(AppRoutes.nrQuraan, extra: "Quraan");
                           },
                           child: Container(
@@ -87,6 +111,8 @@ class _MenuScreenState extends State<MenuScreen> {
                         alignment: Alignment.topRight,
                         child: GestureDetector(
                           onTap: () {
+                            _sendAnalyticEventClick("listening");
+
                             context.pushNamed(AppRoutes.nrQuraan, extra: "Listening");
                           },
                           child: Container(
@@ -109,6 +135,7 @@ class _MenuScreenState extends State<MenuScreen> {
                         alignment: Alignment.bottomLeft,
                         child: GestureDetector(
                           onTap: () {
+                            _sendAnalyticEventClick("prayerTime");
                             context.pushNamed(AppRoutes.nrWaktuShalat);
                           },
                           child: Container(
@@ -131,6 +158,7 @@ class _MenuScreenState extends State<MenuScreen> {
                         alignment: Alignment.bottomRight,
                         child: GestureDetector(
                           onTap: () {
+                            _sendAnalyticEventClick("doa");
                             context.pushNamed(AppRoutes.nrDoa);
                           },
                           child: Container(

@@ -3,6 +3,8 @@ import 'package:injectable/injectable.dart';
 import 'package:my_quran/common/failure.dart';
 import 'package:my_quran/data/datasources/remote/auth/auth_datasource.dart';
 
+import 'package:flutter/services.dart';
+
 import '../../common/exception.dart';
 import '../../domain/repositories/auth/auth_repository.dart';
 
@@ -19,8 +21,13 @@ class AuthRepositoryImpl implements AuthRepository {
       return Right(result);
     } on ServerException {
       return const Left(ServerFailure(''));
+    } on PlatformException catch (e) {
+      if (e.code == 'network_error' || e.message?.contains('7:') == true) {
+        return const Left(ConnectionFailure('Network error. Please check your internet connection.'));
+      }
+      return Left(ServerFailure("Error signing in: ${e.message}"));
     } catch (e) {
-      return const Left(ServerFailure("Error signing in"));
+      return Left(ServerFailure("Error signing in: ${e.toString()}"));
     }
   }
 
