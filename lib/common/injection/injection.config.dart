@@ -31,6 +31,7 @@ import 'package:my_quran/data/repositories/prayer_time_repository_impl.dart'
     as _i680;
 import 'package:my_quran/data/repositories/quraan_repository_impl.dart'
     as _i797;
+import 'package:my_quran/domain/repositories/audio_repository.dart' as _i123;
 import 'package:my_quran/domain/repositories/auth/auth_repository.dart'
     as _i1060;
 import 'package:my_quran/domain/repositories/doa/doa_repository.dart' as _i809;
@@ -52,6 +53,8 @@ import 'package:my_quran/domain/usecase/surah/get_detail_surah_usecase.dart'
     as _i801;
 import 'package:my_quran/domain/usecase/surah/get_list_surah_usecase.dart'
     as _i257;
+import 'package:my_quran/presentation/screen/audio/cubit/audio_cubit.dart'
+    as _i25;
 import 'package:my_quran/presentation/screen/authentication/cubit/auth_cubit.dart'
     as _i198;
 import 'package:my_quran/presentation/screen/detail_quraan/cubit/detail_quraan_cubit.dart'
@@ -89,6 +92,8 @@ extension GetItInjectableX on _i174.GetIt {
         () => _i162.DoaLocalMemoryDatasource());
     gh.lazySingleton<_i359.QuraanLocalDatasource>(
         () => _i359.QuraanLocalDatasourceImpl());
+    gh.factory<_i25.AudioCubit>(
+        () => _i25.AudioCubit(gh<_i123.AudioRepository>()));
     gh.lazySingleton<_i591.AuthDataSource>(
         () => _i591.AuthDataSourceImpl(gh<_i59.FirebaseAuth>()));
     gh.lazySingleton<_i526.PrayerTimeDatasource>(
@@ -109,13 +114,13 @@ extension GetItInjectableX on _i174.GetIt {
         ));
     gh.lazySingleton<_i339.PrayerTimeUsecase>(() => _i339.PrayerTimeUsecase(
         prayerTimeRepository: gh<_i1033.PrayerTimeRepository>()));
-    gh.lazySingleton<_i110.CheckLoginGoogleUsecase>(() =>
-        _i110.CheckLoginGoogleUsecase(
-            authRepository: gh<_i1060.AuthRepository>()));
     gh.lazySingleton<_i156.LoginGoogleUseCase>(() =>
         _i156.LoginGoogleUseCase(authRepository: gh<_i1060.AuthRepository>()));
     gh.lazySingleton<_i490.LogoutGoogleUseCase>(() =>
         _i490.LogoutGoogleUseCase(authRepository: gh<_i1060.AuthRepository>()));
+    gh.lazySingleton<_i110.CheckLoginGoogleUsecase>(() =>
+        _i110.CheckLoginGoogleUsecase(
+            authRepository: gh<_i1060.AuthRepository>()));
     gh.lazySingleton<_i982.QuraanRepository>(() => _i797.QuranRepositoryImpl(
           remoteDataSource: gh<_i49.QuraanDataSource>(),
           quraanDioErrHandler: gh<_i239.QuraanDioErrHandler>(),
@@ -123,11 +128,11 @@ extension GetItInjectableX on _i174.GetIt {
         ));
     gh.lazySingleton<_i1022.GetListDoaUsecase>(() =>
         _i1022.GetListDoaUsecase(doaRepository: gh<_i809.DoaRepository>()));
+    gh.lazySingleton<_i257.GetListSurahUsecase>(() => _i257.GetListSurahUsecase(
+        quraanRepository: gh<_i982.QuraanRepository>()));
     gh.lazySingleton<_i801.GetDetailSurahUsecase>(() =>
         _i801.GetDetailSurahUsecase(
             quraanRepository: gh<_i982.QuraanRepository>()));
-    gh.lazySingleton<_i257.GetListSurahUsecase>(() => _i257.GetListSurahUsecase(
-        quraanRepository: gh<_i982.QuraanRepository>()));
     gh.factory<_i96.PrayerTimeCubit>(() =>
         _i96.PrayerTimeCubit(prayerTimeUsecase: gh<_i339.PrayerTimeUsecase>()));
     gh.factory<_i198.AuthCubit>(() => _i198.AuthCubit(

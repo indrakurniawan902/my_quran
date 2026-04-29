@@ -67,7 +67,7 @@ jobs:
         with:
           appId: ${{ env.APP_ID }}
           token: ${{ secrets.FIREBASE_TOKEN }}
-          groups: Indra Tester
+          groups: indra-tester
           file: build/app/outputs/flutter-apk/app-${{ env.FLAVOR }}-release.apk
           releaseNotes: |
             Branch: ${{ github.ref_name }}

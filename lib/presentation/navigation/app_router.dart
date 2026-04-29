@@ -1,9 +1,12 @@
 import 'package:chucker_flutter/chucker_flutter.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
+import 'package:my_quran/common/injection/injection.dart';
 import 'package:my_quran/domain/entities/surah/surah_data.dart';
 import 'package:my_quran/globals.dart';
 import 'package:my_quran/presentation/navigation/app_routes.dart';
 import 'package:my_quran/presentation/screen/audio/audio_screen.dart';
+import 'package:my_quran/presentation/screen/audio/cubit/audio_cubit.dart';
 import 'package:my_quran/presentation/screen/authentication/login_screen.dart';
 import 'package:my_quran/presentation/screen/authentication/splash_screen.dart';
 import 'package:my_quran/presentation/screen/detail_quraan/detail_quraan_screen.dart';
@@ -59,7 +62,17 @@ final GoRouter qrGlobalRouter = GoRouter(
         name: AppRoutes.nrDetailAudio,
         builder: (context, state) {
           Datum params = state.extra as Datum;
-          return AudioScreen(surah: params);
+          return BlocProvider(
+            create: (_) {
+              final audio = params.audioFull['05'];
+              final cubit = getIt<AudioCubit>();
+              if (audio != null) {
+                cubit.playAudio(audio);
+              }
+              return cubit;
+            },
+            child: AudioScreen(surah: params),
+          );
         },
       ),
       GoRoute(
