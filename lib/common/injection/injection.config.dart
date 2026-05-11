@@ -25,6 +25,7 @@ import 'package:my_quran/data/datasources/remote/prayer_time/prayer_time_datasou
     as _i526;
 import 'package:my_quran/data/datasources/remote/quraan/quraan_datasource.dart'
     as _i49;
+import 'package:my_quran/data/repositories/audio_repository_impl.dart' as _i526;
 import 'package:my_quran/data/repositories/auth_repository_impl.dart' as _i195;
 import 'package:my_quran/data/repositories/doa_repository_impl.dart' as _i550;
 import 'package:my_quran/data/repositories/prayer_time_repository_impl.dart'
@@ -90,6 +91,7 @@ extension GetItInjectableX on _i174.GetIt {
         () => firebaseAuthModule.provideFirebaseAuth());
     gh.lazySingleton<_i162.DoaLocalDatasource>(
         () => _i162.DoaLocalMemoryDatasource());
+    gh.factory<_i123.AudioRepository>(() => _i526.AudioRepositoryImpl());
     gh.lazySingleton<_i359.QuraanLocalDatasource>(
         () => _i359.QuraanLocalDatasourceImpl());
     gh.factory<_i25.AudioCubit>(
