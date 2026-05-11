@@ -73,6 +73,8 @@ jobs:
         run: |
           flutter build apk \
             --release \
+            --obfuscate \
+            --split-debug-info=build/app/outputs/symbols \
             --flavor ${{ env.FLAVOR }} \
             -t ${{ env.TARGET }}
 
