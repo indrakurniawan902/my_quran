@@ -16,7 +16,7 @@ class PrayerTimeCubit extends Cubit<PrayerTimeState> {
 
   void getPrayerTime() async {
     emit(PrayerTimeLoading());
-    final dateNow = DateFormat('yyyy-mm-dd').format(DateTime.now());
+    final dateNow = DateFormat('dd-MM-yyyy').format(DateTime.now());
 
     final position = await determinePosition();
     final result = await prayerTimeUsecase.call(position.latitude.toString(), position.longitude.toString(), dateNow);
